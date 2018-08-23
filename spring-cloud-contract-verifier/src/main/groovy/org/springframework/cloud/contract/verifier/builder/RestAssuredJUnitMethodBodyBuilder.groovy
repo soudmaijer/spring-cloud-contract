@@ -72,7 +72,7 @@ class RestAssuredJUnitMethodBodyBuilder extends JUnitMethodBodyBuilder {
 
 	@Override
 	protected String getResponseBodyPropertyComparisonString(String property, Pattern value) {
-		return """assertThat(responseBody).${createHeaderComparison(value)}"""
+		return """assertThat(responseBody).${createBodyComparison(value)}"""
 	}
 
 	@Override
@@ -103,7 +103,7 @@ class RestAssuredJUnitMethodBodyBuilder extends JUnitMethodBodyBuilder {
 
 	@Override
 	protected void processHeaderElement(BlockBuilder blockBuilder, String property, ExecutionProperty exec) {
-		blockBuilder.addLine("${exec.insertValue("response.header(\"$property\")")};")
+		blockBuilder.addLine("assertThat(response.header(\"$property\")).isEqualTo(${exec.insertValue("response.header(\"$property\")")});")
 	}
 
 	@Override
