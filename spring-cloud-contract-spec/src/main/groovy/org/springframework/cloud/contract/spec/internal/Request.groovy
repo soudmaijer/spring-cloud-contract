@@ -22,7 +22,7 @@ import groovy.transform.ToString
 import groovy.transform.TypeChecked
 import groovy.util.logging.Slf4j
 import org.apache.commons.lang3.StringEscapeUtils
-
+import org.springframework.cloud.contract.spec.RequestSpec
 import org.springframework.cloud.contract.spec.util.RegexpUtils
 import repackaged.nl.flotsam.xeger.Xeger
 
@@ -38,7 +38,7 @@ import java.util.regex.Pattern
 @TypeChecked
 @EqualsAndHashCode
 @ToString(includePackage = false, includeNames = true)
-class Request extends Common {
+class Request extends RequestSpec {
 
 	@Delegate ClientPatternValueDslProperty property = new ClientPatternValueDslProperty()
 	@Delegate HttpMethods httpMethods = new HttpMethods()

@@ -32,7 +32,7 @@ import org.springframework.cloud.contract.spec.internal.Response
 @TypeChecked
 @EqualsAndHashCode
 @ToString(includePackage = false, includeNames = true)
-class Contract extends AbstractContract {
+class Contract extends ContractSpec {
 
 	protected Contract() {}
 
@@ -46,8 +46,8 @@ class Contract extends AbstractContract {
 		return dsl
 	}
 
-	void request(@DelegatesTo(Request) Closure closure) {
-		this.request = new Request()
+	void request(@DelegatesTo(RequestSpec) Closure closure) {
+		this.request = new RequestSpec()
 		closure.delegate = request
 		closure()
 	}

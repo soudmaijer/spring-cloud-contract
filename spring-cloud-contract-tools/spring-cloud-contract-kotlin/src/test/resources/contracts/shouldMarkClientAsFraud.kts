@@ -4,6 +4,8 @@ import org.springframework.cloud.contract.spec.contract
 
 
 contract {
+    description("Some description")
+    priority(1)
     request { // (1)
         method("PUT") // (2)
         url("/fraudcheck") // (3)
