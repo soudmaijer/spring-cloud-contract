@@ -10,7 +10,7 @@ import java.io.File
  * Converter for Kotlin script Dsl file(s)
  *
  * @author Stephan Oudmaijer
- * @since 2.0.0
+ * @since 2.1.0
  */
 open class ContractDslConverter : ContractConverter<List<ContractDsl>> {
 

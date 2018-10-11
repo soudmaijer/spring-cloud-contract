@@ -7,19 +7,19 @@ import org.springframework.cloud.contract.spec.internal.Url
 import org.springframework.cloud.contract.spec.internal.Request as DelegateRequest
 
 
-open class Request(val contract: Contract) {
+open class Request(val contract: Contract, val headers: Headers = Headers()) {
 
     init {
         contract.request = DelegateRequest()
     }
-
-    var headers = Headers()
 
     fun method(value: String) {
         contract.request.method(value)
     }
 
     fun method(httpMethod: HttpMethod) {
+
+        // TODO
         // this.method = delegate.toDslProperty(httpMethod.toString())
     }
 
@@ -72,10 +72,8 @@ open class Request(val contract: Contract) {
 //    }
 //
     fun headers(init: Headers.() -> Unit): Headers {
-        this.headers = Headers()
         headers.init()
         return headers
-
     }
 //
 //    fun body(Map<String, Object> body) {
@@ -113,5 +111,4 @@ open class Request(val contract: Contract) {
 //    fun multipart(Object multipartAsValue) {
 //        this.multipart = new Multipart(multipartAsValue)
 //    }
-
 }

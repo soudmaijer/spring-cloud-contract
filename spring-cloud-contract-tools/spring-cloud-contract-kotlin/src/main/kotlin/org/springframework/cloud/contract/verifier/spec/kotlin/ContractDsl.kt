@@ -11,9 +11,6 @@ import java.util.regex.Pattern
 
 /**
  * Top level Contract Dsl initializer
- *
- * @author Stephan Oudmaijer
- * @since 2.0.0
  */
 fun contract(init: ContractDsl.() -> Unit) = ContractDsl().apply(init)
 
@@ -21,7 +18,7 @@ fun contract(init: ContractDsl.() -> Unit) = ContractDsl().apply(init)
  * Kotlin contract definition, delegates the real functionality to the Groovy Contract class.
  *
  * @author Stephan Oudmaijer
- * @since 2.0.0
+ * @since 2.1.0
  */
 open class ContractDsl @JvmOverloads constructor(val contract: Contract = Contract()) {
 
