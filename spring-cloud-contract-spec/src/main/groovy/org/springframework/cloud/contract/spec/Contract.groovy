@@ -19,10 +19,6 @@ package org.springframework.cloud.contract.spec
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import groovy.transform.TypeChecked
-import org.springframework.cloud.contract.spec.internal.Input
-import org.springframework.cloud.contract.spec.internal.OutputMessage
-import org.springframework.cloud.contract.spec.internal.Request
-import org.springframework.cloud.contract.spec.internal.Response
 
 /**
  * The point of entry to the DSL
@@ -34,39 +30,39 @@ import org.springframework.cloud.contract.spec.internal.Response
 @ToString(includePackage = false, includeNames = true)
 class Contract extends ContractSpec {
 
-	protected Contract() {}
+    protected Contract() {}
 
-	/**
-	 * Factory method to create the DSL
-	 */
-	static Contract make(@DelegatesTo(Contract) Closure closure) {
-		Contract dsl = new Contract()
-		closure.delegate = dsl
-		closure()
-		return dsl
-	}
+    /**
+     * Factory method to create the DSL
+     */
+    static Contract make(@DelegatesTo(Contract) Closure closure) {
+        Contract dsl = new Contract()
+        closure.delegate = dsl
+        closure()
+        return dsl
+    }
 
-	void request(@DelegatesTo(RequestSpec) Closure closure) {
-		this.request = new RequestSpec()
-		closure.delegate = request
-		closure()
-	}
+    void request(@DelegatesTo(RequestSpec) Closure closure) {
+        this.request = new RequestSpec()
+        closure.delegate = request
+        closure()
+    }
 
-	void response(@DelegatesTo(Response) Closure closure) {
-		this.response = new Response()
-		closure.delegate = response
-		closure()
-	}
+    void response(@DelegatesTo(ResponseSpec) Closure closure) {
+        this.response = new ResponseSpec()
+        closure.delegate = response
+        closure()
+    }
 
-	void input(@DelegatesTo(Input) Closure closure) {
-		this.input = new Input()
-		closure.delegate = input
-		closure()
-	}
+    void input(@DelegatesTo(InputSpec) Closure closure) {
+        this.input = new InputSpec()
+        closure.delegate = input
+        closure()
+    }
 
-	void outputMessage(@DelegatesTo(OutputMessage) Closure closure) {
-		this.outputMessage = new OutputMessage()
-		closure.delegate = outputMessage
-		closure()
-	}
+    void outputMessage(@DelegatesTo(OutputMessageSpec) Closure closure) {
+        this.outputMessage = new OutputMessageSpec()
+        closure.delegate = outputMessage
+        closure()
+    }
 }
